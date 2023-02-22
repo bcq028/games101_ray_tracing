@@ -38,6 +38,10 @@ public:
   float x, y, z;
 };
 
+inline double length(const Vector3f &a){
+  return sqrt(a.x*a.x+a.y*a.y+a.z*a.z);
+}
+
 class Vector2f {
 public:
   Vector2f() : x(0), y(0) {}
@@ -50,13 +54,16 @@ public:
   float x, y;
 };
 
+inline double length(const Vector2f &a){
+  return sqrt(a.x*a.x+a.y*a.y);
+}
+
 inline Vector3f lerp(const Vector3f &a, const Vector3f &b, const float &t) {
   return a+(b-a)*t;
 }
 
 inline Vector3f normalize(const Vector3f &v) {
-  double len=sqrt(v.x*v.x+v.y*v.y+v.z*v.z);
-  return v/len;
+  return v/length(v);
 }
 
 inline float dotProduct(const Vector3f &a, const Vector3f &b) {
@@ -70,3 +77,4 @@ inline Vector3f crossProduct(const Vector3f &a, const Vector3f &b) {
     ret.z=a.x*b.y-a.y*b.x;
     return ret;
 }
+
