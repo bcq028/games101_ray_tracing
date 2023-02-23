@@ -100,26 +100,15 @@ inline Vector3f castRay(const Vector3f &orig, const Vector3f &dir,
       break;
     }
     default: {
-      // [comment]
-      // We use the Phong illumation model in the default case. The phong model
-      // is composed of a diffuse and a specular reflection component.
-      // [/comment]
       Vector3f lightAmt = 0, specularColor = 0;
       Vector3f shadowPointOrig = (dotProduct(dir, N) < 0)
                                      ? hitPoint + N * scene.epsilon
                                      : hitPoint - N * scene.epsilon;
-      // [comment]
-      // Loop over all lights in the scene and sum their contribution up
-      // We also apply the lambert cosine law
-      // [/comment]
       for (auto &light : scene.get_lights()) {
         Vector3f lightDir = light->position - hitPoint;
-        // square of the distance between hitPoint and the light
         float lightDistance2 = dotProduct(lightDir, lightDir);
         lightDir = normalize(lightDir);
         float LdotN = std::max(0.f, dotProduct(lightDir, N));
-        // is the point in shadow, and is the nearest occluding object closer to
-        // the object than the light itself?
         auto shadow_res = trace(shadowPointOrig, lightDir, scene.get_objects());
         bool inShadow = shadow_res && (shadow_res->tNear * shadow_res->tNear <
                                        lightDistance2);
@@ -149,12 +138,17 @@ public:
   void Render(const Scene &scene) {
     std::vector<std::vector<Vector3f>> frame_buffer(scene.height,std::vector<Vector3f>(scene.width));
     Vector3f eye_pos(0);
+    float focal_length=1.0;
+    float viewport_height=std::tan(deg2rad(scene.fov * 0.5f))*focal_length;
+    float viewport_width=viewport_height*scene.width / (float)scene.height;
     for(int i=0;i<frame_buffer.size();++i){
       for(int j=0;j<frame_buffer[0].size();++j){
-         int u=j-scene.width/2;
-         int v=i-scene.height/2;
-         Vector3f dir=Vector3f(u+0.5,v+0.5,-1)-eye_pos;
-         frame_buffer[i][j]=castRay(eye_pos, dir, scene, 0)*255;
+            float ndc_x = (j + 0.5f) /scene.width *2 - 1.0f;
+            float ndc_y = (i + 0.5f) /scene.height*2 - 1.0f;
+            float y = ndc_y * viewport_height;
+            float x = ndc_x * viewport_width;
+            Vector3f dir = normalize(Vector3f(x, y, -1)); 
+            frame_buffer[i][j] = 255*castRay(eye_pos, dir, scene, 0);
       }
     }    
     const std::string path="binary.ppm";

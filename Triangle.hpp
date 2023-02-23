@@ -5,30 +5,21 @@
 #include <cstring>
 #include <memory>
 
-inline bool rayTriangleIntersect(const Vector3f& v0, const Vector3f& v1, const Vector3f& v2, const Vector3f& orig,
+inline bool rayTriangleIntersect(const Vector3f& p0, const Vector3f& p1, const Vector3f& p2, const Vector3f& orig,
     const Vector3f& dir, float& tnear, float& u, float& v)
 {
-    // TODO: Implement this function that tests whether the triangle
-    // that's specified bt v0, v1 and v2 intersects with the ray (whose
-    // origin is *orig* and direction is *dir*)
-    // Also don't forget to update tnear, u and v.
-
-    Vector3f e1 = v1 - v0;
-    Vector3f e2 = v2 - v0;
-    Vector3f s0 = orig - v0;
-    Vector3f s1 = crossProduct(dir, e2);
-    Vector3f s2 = crossProduct(s0, e1);
-
-    Vector3f s = Vector3f(dotProduct(s2, e2), dotProduct(s1, s0), dotProduct(s2, dir)) / dotProduct(s1, e1);
-    tnear = s.x;
-    u = s.y;
-    v = s.z;
-
-    if (tnear >= 0 && u >= 0 && v >= 0 && (u + v) <= 1)
-    {
-        return true;
-    }
-    return false;
+   auto e1=p1-p0,e2=p2-p0,s=orig-p0;
+   auto s1=crossProduct(dir, e2),s2=crossProduct(s, e1);
+   auto t=dotProduct(s2, e2)/dotProduct(s1, e1);
+   auto b1=dotProduct(s1, s)/dotProduct(s1, e1);
+   auto b2=dotProduct(s2, dir)/dotProduct(s1, e1);
+   tnear=t;
+   u=b1;
+   v=b2;
+   if(t>=0 && clamp(0,1,b1)==b1 && clamp(0,1,b2)==b2){
+    return true;
+   }
+   return false;
 }
 
 class MeshTriangle : public Object
