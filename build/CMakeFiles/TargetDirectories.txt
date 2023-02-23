@@ -1,0 +1,3 @@
+/home/moona/c/ray_tracing/build/CMakeFiles/RayTracing.dir
+/home/moona/c/ray_tracing/build/CMakeFiles/edit_cache.dir
+/home/moona/c/ray_tracing/build/CMakeFiles/rebuild_cache.dir
