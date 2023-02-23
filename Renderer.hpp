@@ -148,13 +148,13 @@ class Renderer {
 public:
   void Render(const Scene &scene) {
     std::vector<std::vector<Vector3f>> frame_buffer(scene.height,std::vector<Vector3f>(scene.width));
-    Vector3f eye_pos(0,0,1);
+    Vector3f eye_pos(0);
     for(int i=0;i<frame_buffer.size();++i){
       for(int j=0;j<frame_buffer[0].size();++j){
          int u=j-scene.width/2;
          int v=i-scene.height/2;
-         Vector3f dir=Vector3f(u,v,-1)-eye_pos;
-         frame_buffer[i][j]=castRay(eye_pos, dir, scene, 0);
+         Vector3f dir=Vector3f(u+0.5,v+0.5,-1)-eye_pos;
+         frame_buffer[i][j]=castRay(eye_pos, dir, scene, 0)*255;
       }
     }    
     const std::string path="binary.ppm";
@@ -170,7 +170,7 @@ private:
     if(!file.is_open()){
       throw "write header error:file cannot open";
     }
-    file<<"P3\n";
+    file<<"P6\n";
     file<<height<<" "<<width<<'\n';
     file<<255<<'\n';
   }
@@ -182,9 +182,8 @@ private:
     }
     for(int i=frame_buffer.size()-1;i>=0;--i){
       for(int j=0;j<frame_buffer[0].size();++j){
-         file<< frame_buffer[i][j].x <<" "<<frame_buffer[i][j].y<<" "<<frame_buffer[i][j].z<<" ";
+         file<<(char)frame_buffer[i][j].x <<(char)frame_buffer[i][j].y<<(char)frame_buffer[i][j].z;
       }
-      file<<'\n';
     }
   }
 };
