@@ -1,6 +1,9 @@
 #pragma once
 #include "Scene.hpp"
 #include <optional>
+#include <vector>
+#include <iostream>
+#include <fstream>
 
 constexpr float kInfinity = std::numeric_limits<float>::max();
 
@@ -144,69 +147,44 @@ inline Vector3f castRay(const Vector3f &orig, const Vector3f &dir,
 class Renderer {
 public:
   void Render(const Scene &scene) {
-    std::vector<Vector3f> framebuffer(scene.width * scene.height);
-
-    float scale = std::tan(deg2rad(scene.fov * 0.5f));
-    float imageAspectRatio = scene.width / (float)scene.height;
-
-    // Use this variable as the eye position to start your rays.
-    Vector3f eye_pos(0);
-    int m = 0;
-    for (int j = 0; j < scene.height; ++j) {
-      for (int i = 0; i < scene.width; ++i) {
-        // generate primary ray direction
-        // Screen space to NDC space
-        float nx = (i + 0.5f) * 2 / scene.width - 1.0f;
-        float ny = (j + 0.5f) * 2 / scene.height - 1.0f;
-
-        // NDC space to world space
-
-        // Project matrix
-        /*
-         *   [ n/r ,0   ,0       ,0      ]
-         *   [ 0   ,n/t ,0       ,0      ]
-         *   [ 0   ,0   ,n+f/n-f ,2nf/f-n]
-         *   [ 0   ,0   ,1       ,0      ]
-         */
-
-        //
-        // 在投影矩阵中 x 的系数为 n/r
-        // 在投影矩阵中 y 的系数为 n/t
-        // 现在要做一个逆操作，所以我们用 NDC空间的坐标分别除以投影矩阵中的系数
-        // x = nx / n / r
-        // y = ny / n / t
-        // 其中 n(相机到近投影面距离为 默认情况下为1）
-        // =>
-        // x = nx * r
-        // y = ny * t
-        // 其中 r = tan(fov/2)*aspect * |n|， t=tan(fov/2) * |n| , |n| = 1
-        // 所以可得,世界空间中坐标为
-        // x = nx * tan(fov/2)*aspect
-        // y = ny * tan(fov/2)*aspect
-
-        float x = nx * scale * imageAspectRatio;
-        float y = -ny * scale;
-
-        Vector3f dir =
-            Vector3f(x, y, -1); // Don't forget to normalize this direction!
-        dir = normalize(dir);
-        framebuffer[m++] = castRay(eye_pos, dir, scene, 0);
+    std::vector<std::vector<Vector3f>> frame_buffer(scene.height,std::vector<Vector3f>(scene.width));
+    Vector3f eye_pos(0,0,1);
+    for(int i=0;i<frame_buffer.size();++i){
+      for(int j=0;j<frame_buffer[0].size();++j){
+         int u=j-scene.width/2;
+         int v=i-scene.height/2;
+         Vector3f dir=Vector3f(u,v,-1)-eye_pos;
+         frame_buffer[i][j]=castRay(eye_pos, dir, scene, 0);
       }
-      UpdateProgress(j / (float)scene.height);
-    }
-
-    // save framebuffer to file
-    FILE *fp = fopen("binary.ppm", "wb");
-    (void)fprintf(fp, "P6\n%d %d\n255\n", scene.width, scene.height);
-    for (auto i = 0; i < scene.height * scene.width; ++i) {
-      static unsigned char color[3];
-      color[0] = (char)(255 * clamp(0, 1, framebuffer[i].x));
-      color[1] = (char)(255 * clamp(0, 1, framebuffer[i].y));
-      color[2] = (char)(255 * clamp(0, 1, framebuffer[i].z));
-      fwrite(color, 1, 3, fp);
-    }
-    fclose(fp);
+    }    
+    const std::string path="binary.ppm";
+    write_ppm_header(path, frame_buffer.size(), frame_buffer[0].size());
+    write_ppm_data(path, frame_buffer);
   }
 
 private:
+  void write_ppm_header(std::string path, int width,int height){
+    std::ofstream file;
+
+    file.open(path,std::ios::out);
+    if(!file.is_open()){
+      throw "write header error:file cannot open";
+    }
+    file<<"P3\n";
+    file<<height<<" "<<width<<'\n';
+    file<<255<<'\n';
+  }
+  void write_ppm_data(std::string path, const std::vector<std::vector<Vector3f>>& frame_buffer){
+    std::ofstream file;
+    file.open(path,std::ios::app);
+    if(!file.is_open()){
+      throw "write header error:file cannot open";
+    }
+    for(int i=frame_buffer.size()-1;i>=0;--i){
+      for(int j=0;j<frame_buffer[0].size();++j){
+         file<< frame_buffer[i][j].x <<" "<<frame_buffer[i][j].y<<" "<<frame_buffer[i][j].z<<" ";
+      }
+      file<<'\n';
+    }
+  }
 };
