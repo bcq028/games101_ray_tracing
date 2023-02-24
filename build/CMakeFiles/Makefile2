@@ -81,12 +81,12 @@ clean: CMakeFiles/RayTracing.dir/clean
 CMakeFiles/RayTracing.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/RayTracing.dir/build.make CMakeFiles/RayTracing.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/RayTracing.dir/build.make CMakeFiles/RayTracing.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/moona/c/ray_tracing/build/CMakeFiles --progress-num=1,2 "Built target RayTracing"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/moona/c/ray_tracing/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target RayTracing"
 .PHONY : CMakeFiles/RayTracing.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/RayTracing.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/moona/c/ray_tracing/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/moona/c/ray_tracing/build/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/RayTracing.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/moona/c/ray_tracing/build/CMakeFiles 0
 .PHONY : CMakeFiles/RayTracing.dir/rule

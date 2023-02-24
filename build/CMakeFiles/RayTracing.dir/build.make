@@ -83,17 +83,81 @@ CMakeFiles/RayTracing.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RayTracing.dir/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/moona/c/ray_tracing/main.cpp -o CMakeFiles/RayTracing.dir/main.cpp.s
 
+CMakeFiles/RayTracing.dir/Vector.cpp.o: CMakeFiles/RayTracing.dir/flags.make
+CMakeFiles/RayTracing.dir/Vector.cpp.o: ../Vector.cpp
+CMakeFiles/RayTracing.dir/Vector.cpp.o: CMakeFiles/RayTracing.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moona/c/ray_tracing/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/RayTracing.dir/Vector.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RayTracing.dir/Vector.cpp.o -MF CMakeFiles/RayTracing.dir/Vector.cpp.o.d -o CMakeFiles/RayTracing.dir/Vector.cpp.o -c /home/moona/c/ray_tracing/Vector.cpp
+
+CMakeFiles/RayTracing.dir/Vector.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/RayTracing.dir/Vector.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/moona/c/ray_tracing/Vector.cpp > CMakeFiles/RayTracing.dir/Vector.cpp.i
+
+CMakeFiles/RayTracing.dir/Vector.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RayTracing.dir/Vector.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/moona/c/ray_tracing/Vector.cpp -o CMakeFiles/RayTracing.dir/Vector.cpp.s
+
+CMakeFiles/RayTracing.dir/Scene.cpp.o: CMakeFiles/RayTracing.dir/flags.make
+CMakeFiles/RayTracing.dir/Scene.cpp.o: ../Scene.cpp
+CMakeFiles/RayTracing.dir/Scene.cpp.o: CMakeFiles/RayTracing.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moona/c/ray_tracing/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/RayTracing.dir/Scene.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RayTracing.dir/Scene.cpp.o -MF CMakeFiles/RayTracing.dir/Scene.cpp.o.d -o CMakeFiles/RayTracing.dir/Scene.cpp.o -c /home/moona/c/ray_tracing/Scene.cpp
+
+CMakeFiles/RayTracing.dir/Scene.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/RayTracing.dir/Scene.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/moona/c/ray_tracing/Scene.cpp > CMakeFiles/RayTracing.dir/Scene.cpp.i
+
+CMakeFiles/RayTracing.dir/Scene.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RayTracing.dir/Scene.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/moona/c/ray_tracing/Scene.cpp -o CMakeFiles/RayTracing.dir/Scene.cpp.s
+
+CMakeFiles/RayTracing.dir/BVH.cpp.o: CMakeFiles/RayTracing.dir/flags.make
+CMakeFiles/RayTracing.dir/BVH.cpp.o: ../BVH.cpp
+CMakeFiles/RayTracing.dir/BVH.cpp.o: CMakeFiles/RayTracing.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moona/c/ray_tracing/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/RayTracing.dir/BVH.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RayTracing.dir/BVH.cpp.o -MF CMakeFiles/RayTracing.dir/BVH.cpp.o.d -o CMakeFiles/RayTracing.dir/BVH.cpp.o -c /home/moona/c/ray_tracing/BVH.cpp
+
+CMakeFiles/RayTracing.dir/BVH.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/RayTracing.dir/BVH.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/moona/c/ray_tracing/BVH.cpp > CMakeFiles/RayTracing.dir/BVH.cpp.i
+
+CMakeFiles/RayTracing.dir/BVH.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RayTracing.dir/BVH.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/moona/c/ray_tracing/BVH.cpp -o CMakeFiles/RayTracing.dir/BVH.cpp.s
+
+CMakeFiles/RayTracing.dir/Renderer.cpp.o: CMakeFiles/RayTracing.dir/flags.make
+CMakeFiles/RayTracing.dir/Renderer.cpp.o: ../Renderer.cpp
+CMakeFiles/RayTracing.dir/Renderer.cpp.o: CMakeFiles/RayTracing.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moona/c/ray_tracing/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/RayTracing.dir/Renderer.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RayTracing.dir/Renderer.cpp.o -MF CMakeFiles/RayTracing.dir/Renderer.cpp.o.d -o CMakeFiles/RayTracing.dir/Renderer.cpp.o -c /home/moona/c/ray_tracing/Renderer.cpp
+
+CMakeFiles/RayTracing.dir/Renderer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/RayTracing.dir/Renderer.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/moona/c/ray_tracing/Renderer.cpp > CMakeFiles/RayTracing.dir/Renderer.cpp.i
+
+CMakeFiles/RayTracing.dir/Renderer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RayTracing.dir/Renderer.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/moona/c/ray_tracing/Renderer.cpp -o CMakeFiles/RayTracing.dir/Renderer.cpp.s
+
 # Object files for target RayTracing
 RayTracing_OBJECTS = \
-"CMakeFiles/RayTracing.dir/main.cpp.o"
+"CMakeFiles/RayTracing.dir/main.cpp.o" \
+"CMakeFiles/RayTracing.dir/Vector.cpp.o" \
+"CMakeFiles/RayTracing.dir/Scene.cpp.o" \
+"CMakeFiles/RayTracing.dir/BVH.cpp.o" \
+"CMakeFiles/RayTracing.dir/Renderer.cpp.o"
 
 # External object files for target RayTracing
 RayTracing_EXTERNAL_OBJECTS =
 
 RayTracing: CMakeFiles/RayTracing.dir/main.cpp.o
+RayTracing: CMakeFiles/RayTracing.dir/Vector.cpp.o
+RayTracing: CMakeFiles/RayTracing.dir/Scene.cpp.o
+RayTracing: CMakeFiles/RayTracing.dir/BVH.cpp.o
+RayTracing: CMakeFiles/RayTracing.dir/Renderer.cpp.o
 RayTracing: CMakeFiles/RayTracing.dir/build.make
 RayTracing: CMakeFiles/RayTracing.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/moona/c/ray_tracing/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable RayTracing"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/moona/c/ray_tracing/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable RayTracing"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/RayTracing.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
